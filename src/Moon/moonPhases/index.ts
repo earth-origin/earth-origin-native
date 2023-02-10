@@ -1,69 +1,75 @@
-import { LocalDate } from "js-joda";
-
 export function moonPhases() {
     const date = new Date();
-    const getJulianDate = (date = new Date()) => {
+    const lunarCycleLength = 29.530588853;
+
+    function getJulianDate(date = new Date()) {
         const time = date.getTime();
-        const tzoffset = date.getTimezoneOffset()
+        const timeZoneOffset = date.getTimezoneOffset()
 
-        return (time / 86400000) - (tzoffset / 1440) + 2440587.5;
+        return (time / 86400000) - (timeZoneOffset / 1440) + 2440587.5;
     }
-
-    const LUNAR_MONTH = 29.530588853;const getLunarAge = (date = new Date()) => {
+    function getLunarAge(date = new Date()) {
         const percent = getLunarAgePercent(date);
-        const age = percent * LUNAR_MONTH;  return age;
+        return percent * lunarCycleLength;
     }
 
-    const getLunarAgePercent = (date = new Date()) => {
-        return normalize((getJulianDate(date) - 2451550.1) / LUNAR_MONTH);
+    function getLunarAgePercent(date = new Date()) {
+        return normalize((getJulianDate(date) - 2451550.1) / lunarCycleLength);
     }
 
-    const normalize = value => {
+    function normalize(value: number) {
         value = value - Math.floor(value);
-        if (value < 0)
+        if (value < 0) {
             value = value + 1;
+        }
         return value;
     }
 
     const age = getLunarAge(date);
-    if (age < 1.84566)
+    if (age < 1.84566) {
         return {
             name: "New Moon",
             image: require('./newMoon.png')
         };
-    else if (age < 5.53699)
+    } else if (age < 5.53699) {
         return {
             name: "Waxing Crescent",
-            image: require('./fullMoon.png')
+            image: require('./waxingCrescent.png')
         };
-    else if (age < 9.22831)
+    } else if (age < 9.22831) {
         return {
             name: "First Quarter",
-            image: require('./fullMoon.png')
+            image: require('./firstQuarter.png')
         };
-    else if (age < 12.91963)
+    } else if (age < 12.91963) {
         return {
             name: "Waxing Gibbous",
-            image: require('./fullMoon.png')
+            image: require('./waningGibbous.png')
         };
-    else if (age < 16.61096)
+    } else if (age < 16.61096) {
         return {
             name: "Full Moon",
             image: require('./fullMoon.png')
         };
-    else if (age < 20.30228)
+    } else if (age < 20.30228) {
         return {
             name: "Waning Gibbous",
-            image: require('./fullMoon.png')
+            image: require('./waningGibbous.png')
         };
-    else if (age < 23.99361)
+    } else if (age < 23.99361) {
         return {
             name: "Last Quarter",
-            image: require('./fullMoon.png')
+            image: require('./lastQuarter.png')
         };
-    else if (age < 27.68493)
+    } else if (age < 27.68493) {
         return {
             name: "Waning Crescent",
-            image: require('./fullMoon.png')
+            image: require('./waningCrescent.png')
         };
+    } else {
+        return {
+            name: "Unknown",
+            image: require('./unknown.png')
+        };
+    }
 }
