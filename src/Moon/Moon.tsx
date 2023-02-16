@@ -9,7 +9,7 @@ export function Moon() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
             <Image resizeMode="contain" source={moonPhases().image} style={{width}} />
-            <Text style={{color: 'white', fontSize: 60}}>{moonPhases().name}</Text>
+            <Text style={{fontSize: 60}}>{moonPhases().name}</Text>
         </View>
     )
 }
