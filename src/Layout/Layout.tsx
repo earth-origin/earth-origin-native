@@ -2,7 +2,8 @@ import {NavigationContainer, NavigationProp} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {Dashboard} from "../Dashboard";
 import {Moon} from "../Moon";
-import {ThemeProvider,createTheme} from "@rneui/themed";
+import {ThemeProvider, createTheme, useTheme} from "@rneui/themed";
+import {View} from "react-native";
 
 type StackParamList = {
     Dashboard: undefined;
@@ -18,6 +19,9 @@ export function Layout() {
             Button: {
                 raised: false,
             },
+        },
+        darkColors: {
+            background: '#1c1c1c',
         }
     });
     const Stack = createNativeStackNavigator();
@@ -25,7 +29,7 @@ export function Layout() {
     return (
         <ThemeProvider theme={theme}>
             <NavigationContainer>
-                <Stack.Navigator>
+                <Stack.Navigator >
                     <Stack.Screen
                         name="Dashboard"
                         component={Dashboard}
