@@ -6,18 +6,18 @@ import {View} from "react-native";
 
 export function Layout() {
     const Stack = createNativeStackNavigator();
-    const backgroundColor = '#000000';
+    const backgroundColor = '#333';
 
     return (
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen
                     name="Dashboard"
-                    component={() => <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor}}><Dashboard/></View>}
+                    component={Dashboard}
                 />
                 <Stack.Screen
                     name="Moon"
-                    component={() => <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor}}><Moon /></View>}
+                    component={Moon}
                 />
             </Stack.Navigator>
         </NavigationContainer>

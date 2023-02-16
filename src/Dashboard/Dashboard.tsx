@@ -1,7 +1,10 @@
-import {Text} from "react-native";
+import {Text, View} from "react-native";
+import {Moon} from "../Moon";
 
-export function Dashboard() {
-    return (<Text>
-        Dashboard
-    </Text>);
+export function Dashboard(props) {
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <Moon />
+        </View>
+    );
 }
