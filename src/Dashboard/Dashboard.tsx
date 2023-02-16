@@ -1,10 +1,14 @@
-import {Text, View} from "react-native";
-import {Moon} from "../Moon";
+import {Dimensions, View} from "react-native";
+import {MoonWidget} from "./Widgets/MoonWidget";
+import {WeatherWidget} from "./Widgets/WeatherWidget";
 
-export function Dashboard(props) {
+export function Dashboard() {
+    const windowWidth = Dimensions.get('window').width;
+    const windowHeight = Dimensions.get('window').height;
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Moon />
+        <View style={{height: windowHeight, width: windowWidth}}>
+            <MoonWidget />
+            <WeatherWidget />
         </View>
     );
 }
