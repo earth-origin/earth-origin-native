@@ -1,6 +1,8 @@
 {
+  "name": "earthOriginNative",
+  "displayName": "Earth Origin",
   "expo": {
-    "name": "earth-origin-native",
+    "name": "earthOriginNative",
     "slug": "earth-origin-native",
     "version": "1.0.0",
     "orientation": "portrait",
