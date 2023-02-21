@@ -1,1 +1,1 @@
-export {Moon} from './Moon';
+export { Moon } from './Moon';
